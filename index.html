@@ -1,0 +1,22 @@
+let isTvOn = true;
+
+function setTvState(on) {
+  isTvOn = on;
+
+  if (isTvOn) {
+    screenOff.style.opacity = '0';
+    video.style.display = 'block';
+    video.muted = false;
+    video.play().catch(() => {});
+  } else {
+    screenOff.style.opacity = '1';
+    screenOff.style.background = 'black';
+    video.muted = true;
+    video.pause();
+    video.style.display = 'none';
+  }
+}
+
+nose.addEventListener('click', () => {
+  setTvState(!isTvOn);
+});
